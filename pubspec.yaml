@@ -1,10 +1,10 @@
 name: flutter_custom_cursor
-description: A new flutter plugin project.
-version: 0.0.1
-homepage:
+description: Create/Set a custom mouse cursor directly from a memory buffer.
+version: 0.0.3
+homepage: https://github.com/Kingtous/flutter_custom_cursor
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ">=2.15.0 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
@@ -27,13 +27,16 @@ flutter:
   # adding or updating assets for this project.
   plugin:
     platforms:
-#      windows:
-#        pluginClass: FlutterCustomCursorPlugin
+      windows:
+        pluginClass: FlutterCustomCursorPlugin
       macos:
         pluginClass: FlutterCustomCursorPlugin
-#  assets:
-#    - assets/
-#    - assets/cursors/
+      linux:
+        pluginClass: FlutterCustomCursorPlugin
+
+  # assets:
+  #   - assets/
+  #   - assets/cursors/
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
