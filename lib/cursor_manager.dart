@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class CursorData {
@@ -76,6 +77,10 @@ class CursorManager {
   /// static constexpr char kDeleteCustomCursorMethod[] =
   ///     "deleteCustomCursor/windows";
   Future<String> registerCursor(CursorData data) async {
+    if (kIsWeb) {
+      ///TODO:: Will add code for web
+      return data.name;
+    }
     final cursorName = await _getMethodChannel()
         .invokeMethod<String>(_getMethod(createCursorKey), data.toJson());
     assert(cursorName == data.name);
@@ -83,11 +88,19 @@ class CursorManager {
   }
 
   Future<void> deleteCursor(String name) async {
+    if (kIsWeb) {
+      ///TODO:: Will add code for web
+      return;
+    }
     await _getMethodChannel()
         .invokeMethod(_getMethod(deleteCursorMethod), {"name": name});
   }
 
   Future<void> setSystemCursor(String name) async {
+    if (kIsWeb) {
+      ///TODO:: Will add code for web
+      return;
+    }
     await _getMethodChannel()
         .invokeMethod(_getMethod(setCursorMethod), {"name": name});
   }
